@@ -1,7 +1,7 @@
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
 
-autocmd VimEnter * wincmd w
+"autocmd VimEnter * wincmd w
 
 set nocompatible
 "Syntax{{{
@@ -15,7 +15,7 @@ set nocompatible
 
 " Colour schemes {{{
         set background=dark
-        colorscheme solarized
+"        colorscheme solarized
 " }}}
 
     let g:solarized_termcolors=256
@@ -65,7 +65,7 @@ set nocompatible
 
 " Spelling {{{
 
-    set spell                     " enable spell check
+"    set spell                     " enable spell check
     " au BufRead *.use,*.conf,*.cfg,*/conf.d/*,*.log,.vimrc set nospell
 
     au Filetype c,css,html,javascript,php,tex,text,mkd,wiki,vimwiki setlocal spell
@@ -100,13 +100,14 @@ set nocompatible
 
 
     " NerdTree {{{
-        "map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-        "map <leader>e :NERDTreeFind<CR>
-        "nmap <leader>nt :NERDTreeFind<CR>
+        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        map <leader>e :NERDTreeFind<CR>
+        nmap <leader>nt :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        "let NERDTreeChDirMode=0
+        "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let NERDTreeIgnore=['\.swp$']
+	 "let NERDTreeChDirMode=0
         "let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
@@ -122,7 +123,11 @@ set nocompatible
 
 
     " MiniBufExplorer {{{
-        let g:miniBufExplMapCTabSwitchBufs = 1
+	map <leader>b :MiniBufExplorer<CR>
+ 	map <leader>c :CMiniBufExplorer<CR>
+  	map <leader>u :UMiniBufExplorer<CR>
+  	map <leader>t :TMiniBufExplorer<CR>
+	let g:miniBufExplMapCTabSwitchBufs = 1
         let g:miniBufExplUseSingleClick = 1
     " }}}
 
@@ -131,5 +136,14 @@ set nocompatible
         nnoremap <leader>gs :Gstatus<CR>
         nnoremap <leader>gc :Gcommit<CR>
     " }}}
+
+    " Ctrlp {{{
+       " nnoremap <leader>t :CtrlP<CR>
+       " nnoremap <leader><space> :CtrlPBuffer<CR>
+"        let g:ctrlp_working_path_mode = 2                       
+"        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*/node_modules/*   " Linux/MacOSX
+    " }}}
+
+
 " }}}
 
