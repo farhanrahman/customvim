@@ -1,0 +1,41 @@
+VIM custom files setup instructions
+===================================
+
+In order to set up your vim:
+
+* Go to your home directory
+
+``` bash
+	cd ~/
+```
+
+* Clone the repository in your home directory 
+
+```bash
+	git clone https://github.com/farhanrahman/customvim.git
+```
+
+* If you have your .vim file in your home directory make a backup of it
+
+```bash
+	mv .vim .vim_backup
+```
+
+* Delete the .vim directory (maybe you can find a better way to move the vim files in customvim directory to .vim directory) and then rename customvim to .vim
+
+```bash
+	mv customvim .vim
+```
+
+* Go inside the .vim directory and update the submodules:
+
+```bash
+	cd .vim
+	git submodule sync
+	git submodule update --init --recursive
+```
+
+* You are ready to use your customised vim. Files taken mostly form jkimbo's vimfiles repository:
+
+https://github.com/jkimbo/vimfiles
+
