@@ -15,7 +15,7 @@ set nocompatible
 
 " Colour schemes {{{
         set background=dark
-"        colorscheme solarized
+ "       colorscheme solarized
 " }}}
 
     let g:solarized_termcolors=256
@@ -144,6 +144,19 @@ set nocompatible
 "        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*/node_modules/*   " Linux/MacOSX
     " }}}
 
+	nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+	set tags+=~/.vim/tags/ros
+	" OmniCppComplete settings to be tweaked
+	let OmniCpp_NamespaceSearch=1                                                                                         
+	let OmniCpp_GlobalScopeSearch=1
+	let OmniCpp_ShowAccess=1
+	let OmniCpp_MayCompleteDot=1
+	let OmniCpp_MayCompleteArrow=1
+	let OmniCpp_MayCompleteScope=1
+	let OmniCpp_DefaultNamespaces=["std","_GLIBCXX_STD"]
+	" Hotkey to generate tags for you current project
+	map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
 
 " }}}
 
