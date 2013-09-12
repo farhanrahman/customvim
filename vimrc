@@ -15,7 +15,7 @@ set nocompatible
 
 " Colour schemes {{{
         set background=dark
- "       colorscheme solarized
+        colorscheme solarized
 " }}}
 
     let g:solarized_termcolors=256
@@ -114,6 +114,7 @@ set nocompatible
         let NERDTreeWinSize=20
         " autocmd VimEnter * NERDTree
         " autocmd BufEnter * NERDTreeMirror
+	let g:NERDTreeDirArrows=0
     " }}}
 
     " Gundo {{{
@@ -123,10 +124,15 @@ set nocompatible
 
 
     " MiniBufExplorer {{{
-	map <leader>b :MiniBufExplorer<CR>
- 	map <leader>c :CMiniBufExplorer<CR>
-  	map <leader>u :UMiniBufExplorer<CR>
-  	map <leader>t :TMiniBufExplorer<CR>
+	"map <leader>b :MiniBufExplorer<CR>
+	map <leader>b :MBEOpen<CR>
+ 	"map <leader>c :CMiniBufExplorer<CR>
+  	"map <leader>u :UMiniBufExplorer<CR>
+  	map <leader>, :MBEbp<CR>
+  	map <leader>. :MBEbn<CR>
+  	
+	"map <leader>t :TMiniBufExplorer<CR>
+	map <leader>t :MBEToggle<CR>
 	let g:miniBufExplMapCTabSwitchBufs = 1
         let g:miniBufExplUseSingleClick = 1
     " }}}
@@ -157,6 +163,12 @@ set nocompatible
 	let OmniCpp_DefaultNamespaces=["std","_GLIBCXX_STD"]
 	" Hotkey to generate tags for you current project
 	map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+
+	nmap <C-V> "+gP
+	imap <C-V> <ESC><C-V>i
+	vmap <C-C> "+y
+
+	filetype plugin on
 
 " }}}
 
