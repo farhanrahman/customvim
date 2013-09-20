@@ -39,3 +39,5 @@ In order to set up your vim:
 
 https://github.com/jkimbo/vimfiles
 
+
+* If you can't get the submodules then the best thing is to look at .gitmodules and see what they are stored as in the bundles folder. Then download the latest releases from the git repo of those bundles and unzip them into the bundle folder in your ~/.vim/ directory. That should work. There are some bugs in MiniBuf that I found but there is a trick to solve that (just a few clicks of buttons). Message me if you require assitance in there.
