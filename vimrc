@@ -3,6 +3,11 @@
 
 "autocmd VimEnter * wincmd w
 
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+set tabstop=4
+
 set nocompatible
 "Syntax{{{
 	syntax on
@@ -107,15 +112,20 @@ set nocompatible
         let NERDTreeShowBookmarks=1
         "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeIgnore=['\.swp$']
-	 "let NERDTreeChDirMode=0
+		let NERDTreeChDirMode=2
         "let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
-        let NERDTreeWinSize=20
+        let NERDTreeWinSize=30
         " autocmd VimEnter * NERDTree
         " autocmd BufEnter * NERDTreeMirror
-	let g:NERDTreeDirArrows=0
-    " }}}
+		let g:NERDTreeDirArrows=0
+		map <leader>r :NERDTreeFind<cr>
+"	set autochdir
+"	autocmd BufEnter * silent :cd! %:p:h
+		filetype plugin on
+"	autocmd BufEnter * if bufname("") !~"^\[A-Za-z0-9\]*://" | lcd%:p:h | endif
+   " }}}
 
     " Gundo {{{
         nnoremap <F5> :GundoToggle<CR>
@@ -125,15 +135,15 @@ set nocompatible
 
     " MiniBufExplorer {{{
 	"map <leader>b :MiniBufExplorer<CR>
-	map <leader>b :MBEOpen<CR>
- 	"map <leader>c :CMiniBufExplorer<CR>
-  	"map <leader>u :UMiniBufExplorer<CR>
-  	map <leader>, :MBEbp<CR>
-  	map <leader>. :MBEbn<CR>
-  	
-	"map <leader>t :TMiniBufExplorer<CR>
-	map <leader>t :MBEToggle<CR>
-	let g:miniBufExplMapCTabSwitchBufs = 1
+		map <leader>b :MBEOpen<CR>
+ 		"map <leader>c :CMiniBufExplorer<CR>
+  		"map <leader>u :UMiniBufExplorer<CR>
+  		map <leader>, :MBEbp<CR>
+  		map <leader>. :MBEbn<CR>
+		map <C-x> :MBEbd <CR>   	
+		"map <leader>t :TMiniBufExplorer<CR>
+		map <leader>t :MBEToggle<CR>
+		let g:miniBufExplMapCTabSwitchBufs = 1
         let g:miniBufExplUseSingleClick = 1
     " }}}
 
@@ -149,9 +159,12 @@ set nocompatible
 "        let g:ctrlp_working_path_mode = 2                       
 "        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*/node_modules/*   " Linux/MacOSX
     " }}}
-
+	
+	"No highlighting {{{
 	nnoremap <silent> <C-l> :nohl<CR><C-l>
-
+	"}}}
+	
+	" C++ Highlighting{{{
 	set tags+=~/.vim/tags/ros
 	" OmniCppComplete settings to be tweaked
 	let OmniCpp_NamespaceSearch=1                                                                                         
@@ -163,12 +176,15 @@ set nocompatible
 	let OmniCpp_DefaultNamespaces=["std","_GLIBCXX_STD"]
 	" Hotkey to generate tags for you current project
 	map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+	"}}}
 
+	"Copy pasting mapping{{{
 	nmap <C-V> "+gP
 	imap <C-V> <ESC><C-V>i
 	vmap <C-C> "+y
+	"}}}
 
-	filetype plugin on
+"	autocmd BufEnter * :cd! %:p:h 
 
 " }}}
 
