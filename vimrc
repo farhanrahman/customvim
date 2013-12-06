@@ -7,6 +7,8 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 set tabstop=4
+set smartindent
+set shiftwidth=4
 
 set nocompatible
 "Syntax{{{
@@ -112,7 +114,7 @@ set nocompatible
         let NERDTreeShowBookmarks=1
         "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeIgnore=['\.swp$']
-		let NERDTreeChDirMode=2
+		let NERDTreeChDirMode=1
         "let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
@@ -185,6 +187,10 @@ set nocompatible
 	"}}}
 
 "	autocmd BufEnter * :cd! %:p:h 
+
+	"{{{
+		set guifont=Monospace\ 9
+	"}}}
 
 " }}}
 
