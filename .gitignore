@@ -1,0 +1,5 @@
+#SWP files
+*.o
+
+#Private snippet file
+snippets/private.snippets
