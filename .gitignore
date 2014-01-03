@@ -1,5 +1,5 @@
 #SWP files
-*.o
+*.swp
 
 #Private snippet file
-snippets/private.snippets
+snippets/_.snippets
