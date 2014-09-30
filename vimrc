@@ -6,9 +6,12 @@
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+"Tab settings {{{
 set tabstop=4
 set smartindent
 set shiftwidth=4
+set expandtab
+"}}}
 
 set nocompatible
 "Syntax{{{
@@ -21,8 +24,9 @@ set nocompatible
 
 
 " Colour schemes {{{
-        set background=dark
-        colorscheme solarized
+"""        set background=dark
+"""        colorscheme solarized
+        colorscheme mayansmoke
 " }}}
 
     let g:solarized_termcolors=256
@@ -113,7 +117,7 @@ set nocompatible
 
         let NERDTreeShowBookmarks=1
         "let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-        let NERDTreeIgnore=['\.swp$']
+        let NERDTreeIgnore=['\.swp$', '\.pyc','__init__.*']
 		let NERDTreeChDirMode=1
         "let NERDTreeQuitOnOpen=1
         let NERDTreeShowHidden=1
@@ -189,8 +193,13 @@ set nocompatible
 "	autocmd BufEnter * :cd! %:p:h 
 
 	"{{{
-		set guifont=Monospace\ 9
-	"}}}
+        set guifont=Monospace\ 9
+    "}}}
+    "
+    au BufRead,BufNewFile *.svh set filetype=verilog_systemverilog
+
+    " OpenCL 
+    au BufRead,BufNewFile *.cl set filetype=opencl
 
 " }}}
 
