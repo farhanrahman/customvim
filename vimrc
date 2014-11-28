@@ -26,7 +26,7 @@ set nocompatible
 " Colour schemes {{{
 """        set background=dark
 """        colorscheme solarized
-        colorscheme mayansmoke
+        colorscheme badwolf
 " }}}
 
     let g:solarized_termcolors=256
