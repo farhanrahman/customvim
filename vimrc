@@ -24,9 +24,11 @@ set nocompatible
 
 
 " Colour schemes {{{
-"""        set background=dark
-"""        colorscheme solarized
-        colorscheme badwolf
+"        set background=dark
+"        colorscheme solarized
+"        colorscheme mayansmoke
+"    colorscheme badwolf
+    colorscheme mayansmoke
 " }}}
 
     let g:solarized_termcolors=256
@@ -163,7 +165,7 @@ set nocompatible
        " nnoremap <leader>t :CtrlP<CR>
        " nnoremap <leader><space> :CtrlPBuffer<CR>
 "        let g:ctrlp_working_path_mode = 2                       
-"        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*/node_modules/*   " Linux/MacOSX
+        set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*/node_modules/*   " Linux/MacOSX
     " }}}
 	
 	"No highlighting {{{
@@ -171,17 +173,9 @@ set nocompatible
 	"}}}
 	
 	" C++ Highlighting{{{
-	set tags+=~/.vim/tags/ros
-	" OmniCppComplete settings to be tweaked
-	let OmniCpp_NamespaceSearch=1                                                                                         
-	let OmniCpp_GlobalScopeSearch=1
-	let OmniCpp_ShowAccess=1
-	let OmniCpp_MayCompleteDot=1
-	let OmniCpp_MayCompleteArrow=1
-	let OmniCpp_MayCompleteScope=1
-	let OmniCpp_DefaultNamespaces=["std","_GLIBCXX_STD"]
-	" Hotkey to generate tags for you current project
-	map <F5> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+"	" Hotkey to generate tags for you current project
+    map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+    map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 	"}}}
 
 	"Copy pasting mapping{{{
@@ -193,13 +187,41 @@ set nocompatible
 "	autocmd BufEnter * :cd! %:p:h 
 
 	"{{{
-        set guifont=Monospace\ 9
-    "}}}
+		set guifont=Monospace\ 9
+	"}}}
     "
     au BufRead,BufNewFile *.svh set filetype=verilog_systemverilog
 
     " OpenCL 
     au BufRead,BufNewFile *.cl set filetype=opencl
 
+    let g:loaded_golden_ratio = 0
+    let g:top_level = getcwd()
+
+    function! UpdateTopDir()
+        let g:top_level = getcwd()
+    endfunction
+
+    set tags+=.tags
+    comm! -nargs=? -bang UP call UpdateTopDir()
+    let g:alternateSearchPath = 'sfr:source,sfr:src,sfr:include'
+    function! GotoDefinition()
+      let n = search("\\<".expand("<cword>")."\\>[^(]*([^)]*)\\s*\\n*\\s*{")
+    endfunction
+    map <F4> :call GotoDefinition()<CR>
+    imap <F4> <c-o>:call GotoDefinition()<CR>
+
+    function! UpdateTags()
+        !ctags -f .tags -R *
+    endfunction
+
+    function! UpdateScope()
+        !cscope -f ./cscope.out -R
+    endfunction
+
+    comm! -nargs=? -bang UPT call UpdateTags()
+    comm! -nargs=? -bang UPC call UpdateScope()
+
+    au! BufRead,BufNewFile *.json set filetype=json
 " }}}
 
