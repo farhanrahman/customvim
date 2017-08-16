@@ -212,7 +212,7 @@ set nocompatible
     imap <F4> <c-o>:call GotoDefinition()<CR>
 
     function! UpdateTags()
-        !ctags -f .tags -R *
+        !ctags --links=no -f .tags -R *
     endfunction
 
     function! UpdateScope()
@@ -223,5 +223,9 @@ set nocompatible
     comm! -nargs=? -bang UPC call UpdateScope()
 
     au! BufRead,BufNewFile *.json set filetype=json
+
+    set mouse=a
+
+    nmap <C-k> <leader>rj
 " }}}
 

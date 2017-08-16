@@ -34,3 +34,9 @@
 [submodule "bundle/golden-ratio"]
 	path = bundle/golden-ratio
 	url = https://github.com/roman/golden-ratio.git
+[submodule "bundle/lldb.nvim"]
+	path = bundle/lldb.nvim
+	url = https://github.com/dbgx/lldb.nvim.git
+[submodule "bundle/vim-rtags"]
+	path = bundle/vim-rtags
+	url = https://github.com/lyuts/vim-rtags.git
